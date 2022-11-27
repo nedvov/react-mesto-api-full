@@ -1,6 +1,6 @@
 const usersRouter = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
-const { linkPattern } = require('../utils/patterns');
+const { linkPattern } = require('../consts/patterns');
 
 const {
   getUsers,
