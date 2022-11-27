@@ -1,0 +1,16 @@
+.header {
+    width: 100%;
+    margin: 0 auto;      
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width:767px) {
+    .header {
+        width: 282px;
+        position: relative;
+        border: none;
+        align-items: center;
+    }
+}

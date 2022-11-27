@@ -1,0 +1,26 @@
+.sign__input {
+    padding: 0 0 9px;
+    border: none;
+    border-bottom: 2px solid #CCCCCC;
+    margin: 0;
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    background: none;
+}
+
+.sign__input:focus {
+    outline-style: none;
+}
+
+.sign__input::placeholder {
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #CCCCCC;
+}

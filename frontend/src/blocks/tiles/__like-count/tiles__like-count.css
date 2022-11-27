@@ -1,0 +1,16 @@
+.tiles__like-count {
+    margin: 3px 0 0;
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 22px;
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+}

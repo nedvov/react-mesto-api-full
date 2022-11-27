@@ -1,0 +1,8 @@
+.tiles__item {
+    width: 282px;
+    background-color: #FFFFFF;
+    border-radius: 3%;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}

@@ -1,0 +1,15 @@
+.sign__container {
+    display: block;
+    width: 358px;
+    height: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
+}
+
+@media screen and (max-width:767px) {
+    .sign__container {
+        width: 260px;
+        padding-top: 0;
+    }
+}

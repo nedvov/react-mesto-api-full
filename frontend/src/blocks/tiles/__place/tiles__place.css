@@ -1,0 +1,8 @@
+.tiles__place {
+    padding: 25px 20px 25px 21px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}

@@ -1,0 +1,15 @@
+.popup__system-image {
+    width: 430px;
+    height: 330px;
+    object-fit: cover;
+    position: relative;
+    object-position: center;
+    border-radius: 2%;
+}
+
+@media screen and (max-width:767px) {
+    .popup__system-image {
+        width: 280px;
+        height: 308px;
+    }
+}

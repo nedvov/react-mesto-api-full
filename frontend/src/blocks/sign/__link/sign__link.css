@@ -1,0 +1,23 @@
+.sign__link {
+    display: block;
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin: 15px 0 14px;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: opacity 0.5s;
+}
+
+.sign__link:hover {
+    opacity: 0.6;    
+    cursor: pointer;   }
+
+@media screen and (max-width:767px) {
+    .sign__link {
+        margin: 20px 0 0;
+    }
+}

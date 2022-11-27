@@ -1,0 +1,15 @@
+.tiles__like {
+    width: 22px;
+    height: 19px;
+    background-image: url(../../../images/Vector.svg);
+    transition: opacity 0.5s;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    padding: 0;
+    border: none;
+}
+
+.tiles__like:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
