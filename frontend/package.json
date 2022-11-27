@@ -1,6 +1,6 @@
 {
-  "homepage": "https://nedvov.github.io/react-mesto-auth/",
-  "name": "react-mesto-auth",
+  "homepage": "/react-mesto-api-full/frontend/build/",
+  "name": "react-mesto-api-full",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
