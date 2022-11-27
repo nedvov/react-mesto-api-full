@@ -1,8 +1,8 @@
 {
-  "name": "express-mesto-gha",
+  "name": "react-mesto-api-full",
   "version": "1.0.0",
   "description": "Проект Mesto фронтенд + бэкенд",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "lint": "npx eslint .",
