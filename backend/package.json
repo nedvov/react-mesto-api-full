@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nedvov/express-mesto-gha.git"
+    "url": "git+https://github.com/nedvov/react-mesto-api-full.git"
   },
   "keywords": [],
   "author": "Vladimir Nedorezov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nedvov/express-mesto-gha/issues"
+    "url": "https://github.com/nedvov/react-mesto-api-full/issues"
   },
-  "homepage": "https://github.com/nedvov/express-mesto-gha#readme",
+  "homepage": "https://github.com/nedvov/react-mesto-api-full#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
