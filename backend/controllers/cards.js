@@ -26,7 +26,16 @@ module.exports.removeCardByCardId = (req, res, next) => {
     .orFail(new NotFoundError('Ошибка. Запрашиваемая карточка не найдена'))
     .then((card) => {
       if (card.owner.toString() === userId) {
-        Card.findByIdAndRemove(cardId).then((dcard) => res.send(dcard));
+        Card.findByIdAndRemove(cardId)
+          .orFail(new NotFoundError('Ошибка. Запрашиваемая карточка не найдена'))
+          .then((dcard) => res.send(dcard))
+          .catch((err) => {
+            if (err.name === 'CastError') {
+              next(
+                new ValidationError('Передан некорректный идентификатор карточки'),
+              );
+            } else next(err);
+          });
       } else throw new ForbiddenError('Нельзя удалять чужие карточки');
     })
     .catch((err) => {

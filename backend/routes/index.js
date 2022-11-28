@@ -38,8 +38,10 @@ router.post(
   createUser,
 );
 
-router.use('/users', auth, usersRouter);
-router.use('/cards', auth, cardsRouter);
+router.use(auth);
+
+router.use('/users', usersRouter);
+router.use('/cards', cardsRouter);
 
 router.use('/', () => {
   throw new NotFoundError('Указанный путь не найден');
