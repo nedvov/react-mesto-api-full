@@ -115,15 +115,14 @@ class Api {
 }
 
 export const api = new Api({
-    baseUrl: "https://mesto.nomoreparties.co/v1/cohort-49",
+    baseUrl: "https://api.nedvov.mesto.nomoredomains.club",
     headers: {
-        authorization: "bd312182-f682-4611-bb11-842bf508484e",
         "Content-Type": "application/json",
     },
 });
 
 export const sign_api = new Api({
-    baseUrl: "https://auth.nomoreparties.co",
+    baseUrl: "https://api.nedvov.mesto.nomoredomains.club",
     headers: {
         "Content-Type": "application/json",
     },
