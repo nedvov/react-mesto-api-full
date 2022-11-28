@@ -4,6 +4,7 @@ const User = require('../models/user');
 const ValidationError = require('../errors/ValidationError');
 const NotFoundError = require('../errors/NotFoundError');
 const UniqueError = require('../errors/UniqueError');
+const { trusted } = require('mongoose');
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
@@ -120,7 +121,7 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         sameSite: 'none',
-        secure: false,
+        secure: true,
       });
       res.send({ message: 'Авторизация пройдена успешно' });
     })
