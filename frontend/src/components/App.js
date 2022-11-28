@@ -10,7 +10,7 @@ import AddTilesPopup from "./AddTilesPopup";
 import SurePopup from "./SurePopup";
 import Sign from "./Sign";
 import ProtectedRoute from "./ProtectedRoute";
-import { api, sign_api } from "../utils/Api.js";
+import api from "../utils/Api.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import sorryImage from "../images/ups2.png";
 import successImage from "../images/success.png";
@@ -134,7 +134,7 @@ function App() {
 
     const handleSignUp = (password, email) => {
         setIsRenderLoading(true);
-        sign_api
+        api
             .signUp(password, email)
             .then(() => {
                 setIsImagePopupOpened(true);
@@ -150,7 +150,7 @@ function App() {
 
     const handleSignIn = (password, email) => {
         setIsRenderLoading(true);
-        sign_api
+        api
             .signIn(password, email)
             .then((data) => {
                 localStorage.setItem("token", data.token);
@@ -167,8 +167,8 @@ function App() {
     };
 
     const handleSignCheck = () => {
-        sign_api
-            .signCheck(localStorage.getItem("token"))
+        api
+            .signCheck()
             .then((data) => {
                 setCurrentUserEmail(data.data.email);
                 setIsLoggedIn(true);

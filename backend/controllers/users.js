@@ -4,7 +4,6 @@ const User = require('../models/user');
 const ValidationError = require('../errors/ValidationError');
 const NotFoundError = require('../errors/NotFoundError');
 const UniqueError = require('../errors/UniqueError');
-const { trusted } = require('mongoose');
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
@@ -117,13 +116,7 @@ module.exports.login = (req, res, next) => {
         '8c9701e1290ceb57731ecf3947aaee3f0483484d241773445e2319d9c54fd042',
         { expiresIn: '7d' },
       );
-      res.cookie('jwt', token, {
-        maxAge: 3600000 * 24 * 7,
-        httpOnly: true,
-        sameSite: 'none',
-        secure: true,
-      });
-      res.send({ message: 'Авторизация пройдена успешно' });
+      res.send({ token });
     })
     .catch(next);
 };
