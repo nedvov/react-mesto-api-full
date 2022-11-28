@@ -9,7 +9,10 @@ const handleCors = (req, res, next) => {
   }
 
   if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', allowedMethods);
+    res.set({
+      'Access-Control-Allow-Methods': allowedMethods,
+      'Access-Control-Allow-Headers': 'content-type',
+    });
     res.status(204).send();
     return;
   }
