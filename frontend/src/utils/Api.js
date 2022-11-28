@@ -24,6 +24,7 @@ class Api {
     getInitialCards() {
         return this._doRequest(`${this._baseUrl}/cards`, {
             method: "GET",
+            credentials: 'include',
             headers: this._headers,
         });
     }
@@ -31,6 +32,7 @@ class Api {
     getUserInfo() {
         return this._doRequest(`${this._baseUrl}/users/me`, {
             method: "GET",
+            credentials: 'include',
             headers: this._headers,
         });
     }
@@ -38,6 +40,7 @@ class Api {
     addNewCard(name, link) {
         return this._doRequest(`${this._baseUrl}/cards`, {
             method: "POST",
+            credentials: 'include',
             headers: this._headers,
             body: JSON.stringify({
                 name: name,
@@ -49,6 +52,7 @@ class Api {
     setUserInfo(name, job) {
         return this._doRequest(`${this._baseUrl}/users/me`, {
             method: "PATCH",
+            credentials: 'include',
             headers: this._headers,
             body: JSON.stringify({
                 name: name,
@@ -60,6 +64,7 @@ class Api {
     deleteCard(cardId) {
         return this._doRequest(`${this._baseUrl}/cards/${cardId}`, {
             method: "DELETE",
+            credentials: 'include',
             headers: this._headers,
         });
     }
@@ -67,6 +72,7 @@ class Api {
     likeCard(cardId, isLiked) {
         return this._doRequest(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: !isLiked ? "PUT" : "DELETE",
+            credentials: 'include',
             headers: this._headers,
         });
     }
@@ -74,6 +80,7 @@ class Api {
     setUserAvatar(link) {
         return this._doRequest(`${this._baseUrl}/users/me/avatar`, {
             method: "PATCH",
+            credentials: 'include',
             headers: this._headers,
             body: JSON.stringify({
                 avatar: link,
@@ -106,6 +113,7 @@ class Api {
     signCheck(token) {
         return this._doRequest(`${this._baseUrl}/users/me`, {
             method: "GET",
+            credentials: 'include',
             headers: {
                 "Content-Type": "application/json",
                 authorization: `Bearer ${token}`,
