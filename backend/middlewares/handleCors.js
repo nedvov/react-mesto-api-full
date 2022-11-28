@@ -4,6 +4,8 @@ const handleCors = (req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;
 
+  res.header('Access-Control-Allow-Credentials', true);
+
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
   }
@@ -12,7 +14,6 @@ const handleCors = (req, res, next) => {
     res.set({
       'Access-Control-Allow-Methods': allowedMethods,
       'Access-Control-Allow-Headers': 'content-type',
-      'Access-Control-Allow-Credentials': true,
     });
     res.status(204).send();
     return;
