@@ -83,7 +83,7 @@ function App() {
     };
 
     const handleCardLike = (card) => {
-        const isLiked = card.likes.some((i) => i._id === currentUser._id);
+        const isLiked = card.likes.some((i) => i === currentUser._id);
         api.likeCard(card._id, isLiked)
             .then((newCard) => {
                 addCards((state) =>
@@ -153,9 +153,9 @@ function App() {
         api
             .signIn(password, email)
             .then((data) => {
-                localStorage.setItem("token", data.token);
-                setIsLoggedIn(true);
+                localStorage.setItem("token", data.token);                
                 setCurrentUserEmail(email);
+                setIsLoggedIn(true);
                 history.push("/");
             })
             .catch((err) => {
@@ -170,7 +170,7 @@ function App() {
         api
             .signCheck()
             .then((data) => {
-                setCurrentUserEmail(data.data.email);
+                setCurrentUserEmail(data.email);
                 setIsLoggedIn(true);
                 history.push("/");
             })
@@ -183,7 +183,7 @@ function App() {
 
     React.useEffect(() => {
         localStorage.getItem("token") &&
-            handleSignCheck(localStorage.getItem("token"));
+            handleSignCheck();
     }, []);
 
     React.useEffect(() => {
