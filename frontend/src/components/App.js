@@ -10,7 +10,7 @@ import AddTilesPopup from "./AddTilesPopup";
 import SurePopup from "./SurePopup";
 import Sign from "./Sign";
 import ProtectedRoute from "./ProtectedRoute";
-import api from "../utils/Api.js";
+import { api } from "../utils/Api.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import sorryImage from "../images/ups2.png";
 import successImage from "../images/success.png";
