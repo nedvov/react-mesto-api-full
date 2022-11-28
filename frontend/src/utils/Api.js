@@ -21,24 +21,33 @@ class Api {
         return fetch(url, options).then(this.#isOK);
     }
 
-    getInitialCards() {
+    getInitialCards(token) {
         return this._doRequest(`${this._baseUrl}/cards`, {
             method: "GET",
-            headers: this._headers,
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`
+            },
         });
     }
 
-    getUserInfo() {
+    getUserInfo(token) {
         return this._doRequest(`${this._baseUrl}/users/me`, {
             method: "GET",
-            headers: this._headers,
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`
+            },
         });
     }
 
-    addNewCard(name, link) {
+    addNewCard(name, link, token) {
         return this._doRequest(`${this._baseUrl}/cards`, {
             method: "POST",
-            headers: this._headers,
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`
+            },
             body: JSON.stringify({
                 name: name,
                 link: link,
@@ -46,10 +55,13 @@ class Api {
         });
     }
 
-    setUserInfo(name, job) {
+    setUserInfo(name, job, token) {
         return this._doRequest(`${this._baseUrl}/users/me`, {
             method: "PATCH",
-            headers: this._headers,
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`
+            },
             body: JSON.stringify({
                 name: name,
                 about: job,
@@ -57,24 +69,33 @@ class Api {
         });
     }
 
-    deleteCard(cardId) {
+    deleteCard(cardId, token) {
         return this._doRequest(`${this._baseUrl}/cards/${cardId}`, {
             method: "DELETE",
-            headers: this._headers,
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`
+            },
         });
     }
 
-    likeCard(cardId, isLiked) {
+    likeCard(cardId, isLiked, token) {
         return this._doRequest(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: !isLiked ? "PUT" : "DELETE",
-            headers: this._headers,
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`
+            },
         });
     }
 
-    setUserAvatar(link) {
+    setUserAvatar(link, token) {
         return this._doRequest(`${this._baseUrl}/users/me/avatar`, {
             method: "PATCH",
-            headers: this._headers,
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `Bearer ${token}`
+            },
             body: JSON.stringify({
                 avatar: link,
             }),
@@ -84,7 +105,9 @@ class Api {
     signIn(password, email) {
         return this._doRequest(`${this._baseUrl}/signin`, {
             method: "POST",
-            headers: this._headers,
+            headers: {
+                "Content-Type": "application/json",
+            },
             body: JSON.stringify({
                 password: password,
                 email: email,
@@ -95,7 +118,9 @@ class Api {
     signUp(password, email) {
         return this._doRequest(`${this._baseUrl}/signup`, {
             method: "POST",
-            headers: this._headers,
+            headers: {
+                "Content-Type": "application/json",
+            },
             body: JSON.stringify({
                 password: password,
                 email: email,
@@ -103,21 +128,8 @@ class Api {
         });
     }
 
-    signCheck() {
-        return this._doRequest(`${this._baseUrl}/users/me`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                authorization: localStorage.getItem("token") ? `Bearer ${localStorage.getItem("token")}` : null,
-            },
-        });
-    }
 }
 
 export const api = new Api({
     baseUrl: "https://api.nedvov.mesto.nomoredomains.club",
-    headers: {
-        "Content-Type": "application/json",
-        authorization: localStorage.getItem("token") ? `Bearer ${localStorage.getItem("token")}` : null,
-    },
 });

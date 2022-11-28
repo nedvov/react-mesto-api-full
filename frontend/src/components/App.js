@@ -62,7 +62,7 @@ function App() {
 
     const handleUpdateUser = (name, about) => {
         setIsRenderLoading(true);
-        api.setUserInfo(name, about)
+        api.setUserInfo(name, about, localStorage.getItem("token"))
             .then((values) => {
                 setCurrentUser(values);
                 closeAllPopups();
@@ -73,7 +73,7 @@ function App() {
 
     const handleUpdateAvatar = (avatar) => {
         setIsRenderLoading(true);
-        api.setUserAvatar(avatar)
+        api.setUserAvatar(avatar, localStorage.getItem("token"))
             .then((values) => {
                 setCurrentUser(values);
                 closeAllPopups();
@@ -84,7 +84,7 @@ function App() {
 
     const handleCardLike = (card) => {
         const isLiked = card.likes.some((i) => i === currentUser._id);
-        api.likeCard(card._id, isLiked)
+        api.likeCard(card._id, isLiked, localStorage.getItem("token"))
             .then((newCard) => {
                 addCards((state) =>
                     state.map((c) => (c._id === card._id ? newCard : c))
@@ -95,10 +95,10 @@ function App() {
 
     const handleCardDelete = () => {
         setIsRenderLoading(true);
-        api.deleteCard(cardToDelete._id)
+        api.deleteCard(cardToDelete._id, localStorage.getItem("token"))
             .then(() => {
                 addCards((state) =>
-                    state.filter((c) => c._id != cardToDelete._id)
+                    state.filter((c) => c._id !== cardToDelete._id)
                 );
                 closeAllPopups();
             })
@@ -108,7 +108,7 @@ function App() {
 
     const handleAddPlaceSubmit = (name, link) => {
         setIsRenderLoading(true);
-        api.addNewCard(name, link)
+        api.addNewCard(name, link, localStorage.getItem("token"))
             .then((newCard) => {
                 addCards([newCard, ...cards]);
                 closeAllPopups();
@@ -154,7 +154,6 @@ function App() {
             .signIn(password, email)
             .then((data) => {
                 localStorage.setItem("token", data.token);                
-                setCurrentUserEmail(email);
                 setIsLoggedIn(true);
                 history.push("/");
             })
@@ -168,9 +167,8 @@ function App() {
 
     const handleSignCheck = () => {
         api
-            .signCheck()
-            .then((data) => {
-                setCurrentUserEmail(data.email);
+            .getUserInfo(localStorage.getItem("token"))
+            .then(() => {
                 setIsLoggedIn(true);
                 history.push("/");
             })
@@ -188,11 +186,12 @@ function App() {
 
     React.useEffect(() => {
         isLoggedIn &&
-            Promise.all([api.getUserInfo(), api.getInitialCards()])
+            Promise.all([api.getUserInfo(localStorage.getItem("token")), api.getInitialCards(localStorage.getItem("token"))])
                 .then((values) => {
                     const [initialUser, initialCards] = values;
                     setCurrentUser(initialUser);
-                    addCards(initialCards);
+                    setCurrentUserEmail(initialUser.email);
+                    addCards(initialCards.reverse());
                 })
                 .catch((err) => console.log(err));
     }, [isLoggedIn]);
