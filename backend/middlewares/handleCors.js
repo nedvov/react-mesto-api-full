@@ -11,6 +11,7 @@ const handleCors = (req, res, next) => {
   if (method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', allowedMethods);
     res.status(204).send();
+    return;
   }
 
   next();
